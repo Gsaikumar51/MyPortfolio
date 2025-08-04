@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Portfolio of Gugulothu Sai Kumar - Web Developer & Competitive Programmer"/>
   <meta name="keywords" content="Web Developer, Competitive Programmer, NIT Silchar"/>
-  <!-- Open Graph & Twitter Meta Tags -->
   <meta property="og:title" content="Gugulothu Sai Kumar | Portfolio"/>
   <meta property="og:description" content="Web Developer & Competitive Programmer from NIT Silchar"/>
   <meta property="og:url" content="yourwebsite.com"/>
@@ -14,12 +13,13 @@
 
   <title>Gugulothu Sai Kumar | Portfolio</title>
 
-  <!-- External CSS Icons & Animations -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <!-- Inline Responsive CSS -->
+
   <style>
     /* ------------------- RESET & VARIABLES ------------------- */
     * {
@@ -46,7 +46,41 @@
       background: var(--bg-color);
       color: var(--text-color);
       overflow-x: hidden;
+      cursor: none; /* Hide default cursor */
     }
+
+    /* Magical Cursor (Updated) */
+    .cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10001;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+    }
+
+    .cursor-circle {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--primary-color);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s, background-color 0.3s;
+      opacity: 0.8;
+    }
+    
+    .cursor-circle.active {
+      transform: translate(-50%, -50%) scale(1.5);
+      background-color: rgba(100, 255, 218, 0.3);
+      opacity: 0.5;
+    }
+
 
     /* Particle Background Behind Everything */
     #particles-js {
@@ -181,6 +215,7 @@
     .btn-secondary {
       background: transparent;
       border: 1px solid var(--primary-color);
+      color: var(--primary-color);
     }
 
     /* ------------------- HOME IMAGE (CIRCULAR) ------------------- */
@@ -295,17 +330,18 @@
       color: var(--primary-color);
     }
 
-    /* ------------------- SKILLS SECTION ------------------- */
+    /* ------------------- SKILLS SECTION (Updated) ------------------- */
     .skills {
       padding: 120px 10%;
       text-align: center;
+      background: var(--bg-color); 
     }
 
     .heading {
       font-size: var(--h2-font);
       margin-bottom: 1rem;
     }
-
+    
     .skills-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -326,12 +362,53 @@
       box-shadow: var(--neon-glow);
     }
 
-    .skill-card i {
-      font-size: 3rem;
+    .skill-card h3 {
+      font-size: 20px;
       color: var(--primary-color);
-      margin-bottom: 1rem;
+      margin-bottom: 12px;
     }
 
+    .skill-card p {
+      font-size: 15px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    
+    /* New colorful icons */
+    .skill-icon-container {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        transition: transform 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+    }
+    .skill-icon-container i {
+        font-size: 3rem;
+        transition: 0.3s;
+    }
+    
+    .skill-card:hover .skill-icon-container {
+      transform: scale(1.1);
+    }
+
+    .web-dev-icon i {
+      background: linear-gradient(135deg, #f0e68c, #64ffda);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .comp-code-icon i {
+      background: linear-gradient(135deg, #e34f26, #f7df1e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .data-ana-icon i {
+      background: linear-gradient(135deg, #1572B6, #2496ED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
     /* ------------------- PROJECTS SECTION ------------------- */
     .projects {
       padding: 120px 10%;
@@ -373,92 +450,379 @@
       margin-top: 1rem;
     }
 
+    /* ------------------- CAREER GOALS SECTION ------------------- */
+    .goals-section {
+      padding: 120px 10%;
+      background: var(--bg-color);
+      color: #fff;
+      text-align: center;
+    }
+
+    .goals-section .section-header {
+      margin-bottom: 40px;
+    }
+
+    .goals-section .badge {
+      display: inline-block;
+      background: rgba(0, 255, 255, 0.1);
+      color: #00ffff;
+      padding: 8px 18px;
+      border: 1px solid #00ffff;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .goals-section h2 {
+      font-size: 36px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .goals-section .underline {
+      width: 80px;
+      height: 4px;
+      background: #00ffff;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+
+    .goal-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .goal-card {
+      background: var(--glass-bg);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 30px 25px;
+      max-width: 320px;
+      flex: 1;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 18px rgba(0, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .goal-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--neon-glow);
+    }
+
+    .goal-card .goal-icon {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #00ffff;
+    }
+
+    .goal-card h3 {
+      font-size: 20px;
+      color: #00ffff;
+      margin-bottom: 12px;
+    }
+
+    .goal-card p {
+      font-size: 15px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* ------------------- FAQ SECTION (New Styles) ------------------- */
+    .faq-section {
+      min-height: 100vh;
+      padding: 120px 10%;
+      text-align: center;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    .faq-badge {
+      font-size: 0.875rem; /* text-sm */
+      color: var(--primary-color); /* text-cyan-400 */
+      font-weight: 600; /* font-semibold */
+      border-radius: 9999px; /* rounded-full */
+      border: 1px solid var(--primary-color);
+      padding: 4px 16px; /* px-4 py-1 */
+      display: inline-block;
+      margin-bottom: 1rem; /* mb-4 */
+    }
+
+    .faq-heading {
+      font-size: 3rem; /* text-4xl */
+      line-height: 1; /* Adjust as needed */
+      font-weight: 700; /* font-bold */
+    }
+
+    .faq-heading span {
+      color: var(--primary-color);
+    }
+
+    .faq-underline {
+      margin-top: 0.5rem; /* mt-2 */
+      width: 6rem; /* w-24 */
+      height: 0.25rem; /* h-1 */
+      background-color: var(--primary-color); /* bg-cyan-400 */
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 9999px; /* rounded-full */
+    }
+
+    .faq-accordion {
+      max-width: 800px; /* max-w-4xl */
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 3rem; /* space-y-6 */
+    }
+    
+    .faq-item {
+      background: var(--glass-bg); /* Use consistent glass effect */
+      border-radius: 12px; /* rounded-xl */
+      padding: 1.25rem; /* p-5 */
+      transition: all 0.3s; /* duration-300 */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .faq-item:hover {
+      box-shadow: var(--neon-glow);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.25rem; /* text-xl */
+      font-weight: 500; /* font-medium */
+      color: var(--primary-color);
+    }
+
+    .faq-question h4 {
+      font-size: 1.25rem; /* md:text-xl */
+    }
+
+    .faq-question svg {
+      width: 1.25rem; /* w-5 */
+      height: 1.25rem; /* h-5 */
+      transition: transform 0.3s ease; /* rotate-icon */
+    }
+
+    .faq-question.open svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+      padding: 0 1.25rem;
+    }
+
+    .faq-answer.open {
+      max-height: 200px; /* arbitrary large value */
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .faq-answer p {
+      margin-top: 1rem;
+      color: var(--text-color); /* text-gray-300 */
+      line-height: 1.625; /* leading-relaxed */
+    }
+
     /* ------------------- CONTACT SECTION ------------------- */
-    .contact {
+    .contact-section {
       padding: 120px 10%;
       text-align: center;
     }
 
-    .contact .heading {
-      font-size: var(--h2-font);
-      margin-bottom: 2rem;
-    }
-
-    .contact-container {
+    .contact-section .contact-main {
+      padding: 4rem 2rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
       justify-content: center;
       align-items: flex-start;
+      gap: 3rem;
+      flex-wrap: wrap; /* Allows wrapping on smaller screens */
     }
 
-    .contact-info {
-      max-width: 400px;
+    .contact-section .contact-heading {
+      font-size: var(--h2-font);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-section .contact-heading::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+
+    .contact-section .contact-badge {
+      display: inline-block;
+      background: rgba(0, 255, 255, 0.1);
+      color: #00ffff;
+      padding: 8px 18px;
+      border: 1px solid #00ffff;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .contact-box, .form-box {
+      background: var(--glass-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      flex: 1 1 45%; /* Use flex-basis to ensure side-by-side layout on wide screens */
+      max-width: 550px;
+      box-shadow: var(--neon-glow);
+      border: 1px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .contact-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+    
+    .form-box h3 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.5rem;
       text-align: left;
     }
 
-    .contact-info h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info ul {
-      list-style: none;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info ul li {
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-
-    .social-links {
+    .contact-item {
       display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
       gap: 1rem;
-      margin-top: 1rem;
+    }
+    
+    .contact-item i {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      width: 25px;
+      text-align: center;
+    }
+    
+    .contact-item a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
     }
 
-    .contact-form {
-      max-width: 400px;
-      width: 100%;
+    .contact-item a:hover {
+      color: var(--primary-color);
+    }
+    
+    .contact-item strong {
+      display: block;
+      color: #ccc;
+      margin-bottom: 0.3rem;
+    }
+    
+    .contact-item span {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+    }
+
+    .status {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .status span {
+      color: var(--primary-color);
+      margin-right: 8px;
+      font-size: 1.2rem;
+    }
+    
+    .form-box form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      text-align: left;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--glass-bg);
-      background: var(--glass-bg);
+    .form-box label {
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
       color: var(--text-color);
-      border-radius: 5px;
-      font-size: 1rem;
-      transition: 0.3s;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--primary-color);
+    .form-box input, .form-box textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+    }
+
+    .form-box textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-box button {
+      margin-top: 1.5rem;
+      padding: 12px 20px;
+      background-color: var(--primary-color);
+      color: var(--bg-color);
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-box button:hover {
+      transform: scale(1.05);
       box-shadow: var(--neon-glow);
     }
 
-    .contact-form button {
-      padding: 12px 20px;
-      background: var(--primary-color);
-      color: var(--bg-color);
-      border-radius: 5px;
-      border: none;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
+    /* Floating Left Sidebar */
+    .floating-icons {
+      position: fixed;
+      left: 20px;
+      top: 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1000;
     }
 
-    .contact-form button:hover {
-      transform: scale(1.1);
+    .floating-icons a {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      background: var(--glass-bg);
+      padding: 12px;
+      border-radius: 50%;
+      text-align: center;
+      transition: 0.3s;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .floating-icons a:hover {
+      background: var(--primary-color);
+      color: var(--bg-color);
       box-shadow: var(--neon-glow);
     }
 
@@ -482,7 +846,7 @@
       }
     }
 
-    .home, .about, .skills, .projects, .contact {
+    .home, .about, .skills, .projects, .contact-section, .goals-section, .faq-section {
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -497,8 +861,28 @@
     }
 
     /* ------------------- RESPONSIVE BREAKPOINTS ------------------- */
+    @media (min-width: 901px) {
+        .contact-main {
+            flex-direction: row; /* Force side-by-side on larger screens */
+        }
+    }
 
-    /* For tablets and smaller laptops (max-width: 768px) */
+    @media (max-width: 900px) {
+      .contact-main {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-box, .form-box {
+        width: 90%;
+      }
+      .floating-icons {
+        left: 10px;
+      }
+      .skills-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
     @media (max-width: 768px) {
       /* Navigation becomes vertical */
       .navlist {
@@ -545,6 +929,16 @@
         padding-left: 0;
         text-align: center;
       }
+
+      /* Career Goals Section */
+      .goal-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .faq-heading {
+        font-size: 2.5rem;
+      }
     }
 
     /* For small phones (max-width: 576px) */
@@ -562,40 +956,37 @@
         font-size: 1.8rem;
       }
     }
-
-    /* Cursor Dot (if you use a custom cursor) */
-    .cursor-dot {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background-color: var(--primary-color);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-    }
   </style>
 </head>
 <body>
-  <!-- Particle Background (Optional) -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-circle"></div>
+
+  <div class="floating-icons">
+    <a href="https://github.com/Gsaikumar51" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="mailto:gugulothusaikumar133@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+
   <div id="particles-js"></div>
 
-  <!-- Header -->
   <header class="header">
-    <a href="#" class="logo">Portf<span>olio</span></a>
+    <a href="#" class="logo">Saik<span>umar</span></a>
     <nav class="navbar">
       <ul class="navlist">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#career-goals">Goals</a></li>
+        <li><a href="#faq-section">FAQ</a></li>
+        <li><a href="#contact-section">Contact</a></li>
       </ul>
       <div class="bx bx-menu" id="menu-icon"></div>
     </nav>
   </header>
 
-  <!-- Home Section -->
   <section class="home" id="home" data-aos="fade-up">
     <div class="home-content">
       <div class="text-slide">
@@ -614,7 +1005,6 @@
     </div>
   </section>
 
-  <!-- About Section -->
   <section class="about" id="about" data-aos="fade-right">
     <div class="about-image">
       <img src="assets/image2.jpg" alt="About Me" loading="eager">
@@ -638,33 +1028,31 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
   <section class="skills" id="skills" data-aos="fade-left">
     <h2 class="heading">My <span>Skills</span></h2>
     <div class="skills-container">
       <div class="skill-card">
-        <i class="ri-code-box-fill"></i>
+        <div class="skill-icon-container web-dev-icon"><i class="ri-code-box-fill"></i></div>
         <h3>Web Development</h3>
         <p>I have experience in building web applications using <span class="lang">HTML, CSS, JavaScript, React.js, and SQL</span>. I have developed projects like the PYQ Paper Catalogue Portal and TextUtils.</p>
       </div>
       <div class="skill-card">
-        <i class="ri-cpu-line"></i>
+        <div class="skill-icon-container comp-code-icon"><i class="ri-cpu-line"></i></div>
         <h3>Competitive Coding</h3>
         <p>I have solved 600+ problems on platforms like CodeChef and Codeforces. I have a 4-star rating on CodeChef and specialize in data structures and algorithms.</p>
       </div>
       <div class="skill-card">
-        <i class="ri-database-2-line"></i>
+        <div class="skill-icon-container data-ana-icon"><i class="ri-database-2-line"></i></div>
         <h3>Data Analytics</h3>
         <p>I am skilled in data analysis and visualization using tools like <span class="lang">Power BI, Tableau, and Excel</span>. I have earned a Data Analytics certification from Cisco.</p>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+
   <section class="projects" id="projects" data-aos="zoom-in">
     <h2 class="heading">My <span>Projects</span></h2>
     <div class="projects-grid">
-      <!-- Project 1 -->
       <div class="project-card">
         <img src="assets/Driver.png" alt="Driver Drowsiness Detection" loading="eager">
         <div class="project-info">
@@ -676,7 +1064,6 @@
           </div>
         </div>
       </div>
-      <!-- Project 2 -->
       <div class="project-card">
         <img src="assets/TextUtils.png" alt="TextUtils" loading="eager">
         <div class="project-info">
@@ -688,7 +1075,6 @@
           </div>
         </div>
       </div>
-      <!-- Project 3 -->
       <div class="project-card">
         <img src="assets/pyq.png" alt="PYQ Paper Catalogue Portal" loading="eager">
         <div class="project-info">
@@ -700,7 +1086,6 @@
           </div>
         </div>
       </div>
-      <!-- Project 4 -->
       <div class="project-card">
         <img src="assets/proj_2.png" alt="Fast Typer Game" loading="eager">
         <div class="project-info">
@@ -715,37 +1100,184 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact" data-aos="fade-up">
-    <h2 class="heading">Contact <span>Me!</span></h2>
-    <div class="contact-container">
-      <div class="contact-info">
-        <h3>Let's Work Together!</h3>
-        <ul>
-          <li><i class='bx bx-phone'></i> +91-8247413490</li>
-          <li><i class='bx bx-envelope'></i> gugulothusaikumar133@gmail.com</li>
-        </ul>
-        <div class="social-links">
-          <a href="https://github.com/Gsaikumar51" target="_blank"><i class='bx bxl-github'></i></a>
-          <a href="#"><i class='bx bxl-linkedin'></i></a>
-          <a href="#"><i class='bx bxl-twitter'></i></a>
+  <section class="goals-section" id="career-goals">
+    <div class="section-header">
+      <div class="badge">🚀 My Roadmap</div>
+      <h2>Career Goals</h2>
+      <div class="underline"></div>
+    </div>
+    <div class="goal-cards">
+      <div class="goal-card">
+        <div class="goal-icon">🎯</div>
+        <h3>Short-Term Goal</h3>
+        <p>
+          To secure a challenging Frontend Developer position where I can apply my skills
+          in React and Next.js, contribute to meaningful projects, and continuously learn
+          from experienced mentors within a collaborative team.
+        </p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-icon">📊</div>
+        <h3>Mid-Term Goal</h3>
+        <p>
+          To evolve into a Senior Frontend Developer, taking ownership of complex features,
+          mentoring junior developers, and deepening my expertise in performance optimization
+          and building highly scalable applications.
+        </p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-icon">🚀</div>
+        <h3>Long-Term Goal</h3>
+        <p>
+          To become a technical lead or solutions architect, guiding technical strategy,
+          driving innovation in user experience, and making a significant impact on the products
+          and teams I help create.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="faq-section" class="faq-section">
+    <div class="text-center mb-12">
+      <p class="faq-badge">
+        Have Questions? I Have Answers
+      </p>
+      <h2 class="faq-heading">Frequently Asked <span>Questions</span></h2>
+      <div class="faq-underline"></div>
+    </div>
+
+    <div class="faq-accordion">
+      <div class="faq-item">
+        <div class="flex justify-between items-center cursor-pointer faq-question">
+          <h4 class="text-lg md:text-xl font-medium">
+            Are you currently available for freelance projects or full-time opportunities?
+          </h4>
+          <svg class="w-5 h-5 rotate-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+        <div class="faq-answer">
+          <p class="mt-4 text-gray-300 leading-relaxed">
+            Absolutely! I am actively seeking new full-time opportunities. I am also open to discussing interesting freelance projects that align with my skillset. Please feel free to reach out via the contact form below.
+          </p>
         </div>
       </div>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
+
+      <div class="faq-item">
+        <div class="flex justify-between items-center cursor-pointer faq-question">
+          <h4 class="text-lg md:text-xl font-medium">
+            What is your preferred technology stack?
+          </h4>
+          <svg class="w-5 h-5 rotate-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+        <div class="faq-answer">
+          <p class="mt-4 text-gray-300 leading-relaxed">
+            My core expertise lies in the modern JavaScript ecosystem. I'm most proficient with React and Next.js for frontend development. For backend tasks, I'm comfortable with Node.js and have experience with various databases like MongoDB and MariaDB. I'm a lifelong learner and always excited to adapt to new technologies required by a project.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="flex justify-between items-center cursor-pointer faq-question">
+          <h4 class="text-lg md:text-xl font-medium">
+            What does your typical development process look like?
+          </h4>
+          <svg class="w-5 h-5 rotate-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+        <div class="faq-answer">
+          <p class="mt-4 text-gray-300 leading-relaxed">
+            I follow an agile approach. My process usually starts with understanding the requirements and user stories, followed by designing a component architecture. I then move to development, writing clean and maintainable code. I believe in frequent communication, regular code reviews, and thorough testing to ensure a high-quality final product.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="flex justify-between items-center cursor-pointer faq-question">
+          <h4 class="text-lg md:text-xl font-medium">
+            Are you open to working remotely or considering relocation?
+          </h4>
+          <svg class="w-5 h-5 rotate-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+        <div class="faq-answer">
+          <p class="mt-4 text-gray-300 leading-relaxed">
+            I am fully equipped and experienced in working remotely and have a proven track record of maintaining high productivity. I am also open to discussing relocation opportunities for a position that is a great fit for my career goals.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <section class="contact-section" id="contact-section" data-aos="fade-up">
+    <div class="contact-badge">Let's work together</div>
+    <h2 class="contact-heading">Get In <span>Touch</span></h2>
+    <div class="contact-main">
+      <div class="contact-box">
+        <h3 style="color: var(--primary-color);">Contact Information</h3>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:gugulothusaikumar133@gmail.com">gugulothusaikumar133@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <div>
+            <strong>LinkedIn</strong>
+            <a href="#" target="_blank">linkedin.com/in/gugulothusaikumar</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <div>
+            <strong>GitHub</strong>
+            <a href="https://github.com/Gsaikumar51" target="_blank">github.com/Gsaikumar51</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-instagram"></i>
+          <div>
+            <strong>Instagram</strong>
+            <a href="#" target="_blank">instagram.com/gugulothusaikumar</a>
+          </div>
+        </div>
+        <div class="status">
+          <strong>Current Status</strong><br/>
+          <span>●</span>Available for freelance work and full-time opportunities
+        </div>
+      </div>
+
+      <div class="form-box">
+        <h3 style="color: var(--primary-color);">Send Me a Message</h3>
+        <form class="contact-form">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" placeholder="Your Name" required>
+
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="youremail@example.com" required>
+
+          <label for="subject">Subject *</label>
+          <input type="text" id="subject" placeholder="Subject about cooperation opportunities..." required>
+
+          <label for="message">Message *</label>
+          <textarea id="message" placeholder="Your detailed message here..." required></textarea>
+
+          <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <p>&copy; 2024 Gugulothu Sai Kumar. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
@@ -774,6 +1306,55 @@
     window.addEventListener('scroll', () => {
       document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50);
     });
+
+    // FAQ Section Toggler
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('svg');
+
+      question.addEventListener('click', () => {
+        const isOpen = answer.classList.contains('open');
+
+        // Close all other FAQs
+        document.querySelectorAll('.faq-answer').forEach(a => {
+          if (a !== answer) a.classList.remove('open');
+        });
+        document.querySelectorAll('.faq-question').forEach(q => {
+          if (q !== question) q.classList.remove('open');
+        });
+        document.querySelectorAll('.faq-question svg').forEach(i => {
+          if (i !== icon) i.classList.remove('open');
+        });
+
+        // Toggle the current FAQ
+        if (!isOpen) {
+          question.classList.add('open');
+          answer.classList.add('open');
+          icon.classList.add('open');
+        }
+      });
+    });
+
+    // Magical Cursor Script
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorCircle = document.querySelector('.cursor-circle');
+    const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, input, textarea');
+
+    window.addEventListener('mousemove', e => {
+      cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      cursorCircle.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    });
+
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursorCircle.classList.add('active');
+        });
+        element.addEventListener('mouseleave', () => {
+            cursorCircle.classList.remove('active');
+        });
+    });
+
 
     // Initialize Particles.js
     particlesJS("particles-js", {
@@ -820,17 +1401,17 @@
         },
         "move": {
           "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "random": true,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
+            "speed": 2,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
         }
       },
       "interactivity": {

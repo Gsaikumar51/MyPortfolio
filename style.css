@@ -269,6 +269,80 @@ body {
   margin-bottom: 1rem;
 }
 
+.goals-section {
+  padding: 4rem 2rem;
+  background: radial-gradient(circle at center, #1f1f2e, #0d0d1a);
+  text-align: center;
+  color: #fff;
+}
+
+.section-header .badge {
+  background: #1b1b30;
+  color: #00ffff;
+  font-weight: bold;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.underline {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #00ffff, #1e90ff);
+  margin: 0.5rem auto 2rem;
+  border-radius: 2px;
+}
+
+.goal-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.goal-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+  padding: 2rem;
+  width: 300px;
+  transition: 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.goal-card:hover {
+  border-color: #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.goal-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ffff;
+}
+
+.goal-card h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.goal-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+
 /* Projects Section */
 .projects {
   padding: 120px 10%;
